@@ -1,22 +1,21 @@
-import { Icon } from '@chakra-ui/react'
-import { AiOutlineShoppingCart } from 'react-icons/fa'
-import {
-    Alert,
-    AlertIcon,
-  } from '@chakra-ui/react'
+import {Alert, AlertIcon, Box, Flex, Icon} from '@chakra-ui/react'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
+
 
 
   
   const CartWidget = () => {
     
     return (
-        
-        <Icon as= {AiOutlineShoppingCart}>
-        <Alert status='info'>
-    <AlertIcon />
+
+<Box>
+    <Flex>
+ <Icon as= {AiOutlineShoppingCart}/>
+ <Alert>
     (1)
   </Alert>
-  </Icon>
+  </Flex>
+</Box>
 )
 }
 

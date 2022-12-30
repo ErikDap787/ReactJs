@@ -3,13 +3,17 @@
       MenuGroup,
       MenuOptionGroup,
       MenuDivider, 
-      Button} from '@chakra-ui/react'
-      import { ChevronDownIcon } from '@chakra-ui/icons'
-import CartWidget from './CartWidget'
+      Button,
+      Container,
+      Box,
+      Flex} from '@chakra-ui/react'
+  
+     import CartWidget from './CartWidget'
 
    const NavBar = () => { return (
-   
 
+<Box>
+<Flex>
 <Menu>
    <MenuButton as={Button}>
     Home
@@ -27,7 +31,9 @@ import CartWidget from './CartWidget'
     Sobre nosotros
    </MenuButton>
    <CartWidget />
-   </Menu>
+</Menu>
+</Flex>
+</Box>
 )}
 
 
