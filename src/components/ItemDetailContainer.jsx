@@ -10,7 +10,7 @@ const ItemDetailContainer = () => {
         setLoading(true)
 
         fetch("../consolas.json")
-            .then((respuesta) => respuesta.json())
+            .then((res) => res.json())
             .then(res => {
                 setLoading(false)
                 setProductsList(res.find(item => item.id === 1))

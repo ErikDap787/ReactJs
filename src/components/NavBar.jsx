@@ -21,6 +21,7 @@ const NavBar = () => {
                <MenuButton as={Button}>
                   Home
                </MenuButton>
+
                <MenuButton as={Button}>
                   Consolas
                </MenuButton>
