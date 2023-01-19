@@ -1,43 +1,47 @@
 
-     import { Menu, MenuButton, MenuItem, MenuList, MenuItemOption,
-      MenuGroup,
-      MenuOptionGroup,
-      MenuDivider, 
-      Button,
-      Container,
-      Box,
-      Flex} from '@chakra-ui/react'
-  
-     import CartWidget from './CartWidget'
+import {
+   Menu, MenuButton, MenuItem, MenuList, MenuItemOption,
+   MenuGroup,
+   MenuOptionGroup,
+   MenuDivider,
+   Button,
+   Container,
+   Box,
+   Flex
+} from '@chakra-ui/react'
 
-   const NavBar = () => { return (
+import CartWidget from './CartWidget'
 
-<Box>
-<Flex>
-<Menu>
-   <MenuButton as={Button}>
-    Home
-   </MenuButton>
-   <MenuButton as={Button}>
-    Consolas
-   </MenuButton>
-   <MenuButton as={Button}>
-    Juegos
-   </MenuButton>
-   <MenuButton as={Button}>
-    Accesorios
-   </MenuButton>
-   <MenuButton as={Button}>
-    Sobre nosotros
-   </MenuButton>
-   <CartWidget />
-</Menu>
-</Flex>
-</Box>
-)}
+const NavBar = () => {
+   return (
+
+      <Box>
+         <Flex>
+            <Menu>
+               <MenuButton as={Button}>
+                  Home
+               </MenuButton>
+               <MenuButton as={Button}>
+                  Consolas
+               </MenuButton>
+               <MenuButton as={Button}>
+                  Juegos
+               </MenuButton>
+               <MenuButton as={Button}>
+                  Accesorios
+               </MenuButton>
+               <MenuButton as={Button}>
+                  Sobre nosotros
+               </MenuButton>
+               <CartWidget />
+            </Menu>
+         </Flex>
+      </Box>
+   )
+}
 
 
-   export default NavBar
-   
+export default NavBar
+
 
 
