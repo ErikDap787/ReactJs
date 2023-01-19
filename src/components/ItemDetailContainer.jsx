@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { ItemDetail } from './ItemDetail';
-import { customFetch } from '../helpers/customFetch';
-import { products } from '../helpers/products';
 
 
 const ItemDetailContainer = () => {
@@ -10,7 +8,9 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         setLoading(true)
-        customFetch(products)
+
+        fetch("../consolas.json")
+            .then((respuesta) => respuesta.json())
             .then(res => {
                 setLoading(false)
                 setProductsList(res.find(item => item.id === 1))
