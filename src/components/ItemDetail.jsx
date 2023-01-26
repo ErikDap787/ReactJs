@@ -6,3 +6,5 @@ const ItemDetail = ({ productsList }) => {
         </div>
     );
 }
+
+export default ItemDetail;

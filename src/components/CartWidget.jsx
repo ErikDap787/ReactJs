@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, Box, Flex, Icon } from '@chakra-ui/react'
+import { Alert, Box, Flex, Icon } from '@chakra-ui/react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 

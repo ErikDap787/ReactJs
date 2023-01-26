@@ -7,37 +7,54 @@ import {
    Button,
    Container,
    Box,
-   Flex
+   Flex,
+   Img
 } from '@chakra-ui/react'
 
 import CartWidget from './CartWidget'
 
+import logo from '../img/logo.png'
+import { Link } from 'react-router-dom'
+import consolas from '../consolas.json'
+
 const NavBar = () => {
+
+   const { xbox, nintendo, playstation } = consolas
+
    return (
 
       <Box>
          <Flex>
             <Menu>
-               <MenuButton as={Button}>
-                  Home
-               </MenuButton>
-
-               <MenuButton as={Button}>
-                  Consolas
-               </MenuButton>
-               <MenuButton as={Button}>
-                  Juegos
-               </MenuButton>
-               <MenuButton as={Button}>
-                  Accesorios
-               </MenuButton>
-               <MenuButton as={Button}>
-                  Sobre nosotros
-               </MenuButton>
+               <Link to="/">
+                  <MenuButton as={Button}>
+                     <Img src={logo}></Img>
+                  </MenuButton>
+               </Link>
+               <Link to="/">
+                  <MenuButton as={Button}>
+                     Home
+                  </MenuButton>
+               </Link>
+               <Link to="/xbox">
+                  <MenuButton as={Button}>
+                     Xbox
+                  </MenuButton>
+               </Link>
+               <Link to="/nintendo">
+                  <MenuButton as={Button}>
+                     Nintendo
+                  </MenuButton>
+               </Link>
+               <Link to="/playstation">
+                  <MenuButton as={Button}>
+                     Playstation
+                  </MenuButton>
+               </Link>
                <CartWidget />
             </Menu>
          </Flex>
-      </Box>
+      </Box >
    )
 }
 

@@ -1,5 +1,7 @@
+import { Text } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
-import { ItemList } from './ItemList';
+import ItemList from './ItemList';
+
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -20,15 +22,14 @@ const ItemListContainer = ({ greeting }) => {
 
     return (
 
-    <
-        <h1>{greeting}</h1>
+        <Text>{greeting}</Text>,
 
-     
-        
+
+
         (!loading ? <ItemList productsList={productsList} /> : <h1>Loading...</h1>)
 
-        />
+
     )
-    }
+}
 
 export default ItemListContainer
