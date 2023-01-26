@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
+import { useParams } from 'react-router-dom';
 
 
 const ItemDetailContainer = () => {
     const [productsList, setProductsList] = useState({})
     const [loading, setLoading] = useState(true)
+    const { id } = useParams()
 
-    const seeProducts = () => {
+    const seeProductDetail = () => {
 
         fetch("../consolas.json")
             .then((res) => res.json())
             .then((res) => {
 
-                if (category) {
+                if (id) {
                     setLoading(false)
-                    setProductsList(res.filter(product => product.category === category))
+                    setProductsList(res.find(product => product.id === id))
                 } else {
                     setProductsList(res)
                     setLoading(false)
@@ -23,7 +25,7 @@ const ItemDetailContainer = () => {
             )
     }
 
-    useEffect(() => { seeProducts() }, [category])
+    useEffect(() => { seeProductDetail() }, [id])
 
 
     return (
