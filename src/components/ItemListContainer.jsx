@@ -1,24 +1,33 @@
 import { Text } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import ItemList from './ItemList';
+import { useParams } from 'react-router-dom';
 
 
 const ItemListContainer = ({ greeting }) => {
 
     const [productsList, setProductsList] = useState([])
     const [loading, setLoading] = useState(true)
+    const { category } = useParams()
 
-    useEffect(() => {
-        setLoading(true)
+    const seeProducts = () => {
 
         fetch("../consolas.json")
             .then((res) => res.json())
-            .then(res => {
-                setLoading(false)
-                setProductsList(res)
-            })
-    }, [])
+            .then((res) => {
 
+                if (category) {
+                    setLoading(false)
+                    setProductsList(res.filter(product => product.category === category))
+                } else {
+                    setListaProductos(res)
+                    setLoading(false)
+                }
+            }
+            )
+    }
+
+    useEffect(() => { seeProducts() }, [category])
 
     return (
 
