@@ -6,17 +6,25 @@ const ItemDetailContainer = () => {
     const [productsList, setProductsList] = useState({})
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        setLoading(true)
+    const seeProducts = () => {
 
         fetch("../consolas.json")
             .then((res) => res.json())
-            .then(res => {
-                setLoading(false)
-                setProductsList(res.find(item => item.id === 1))
+            .then((res) => {
 
-            })
-    }, [])
+                if (category) {
+                    setLoading(false)
+                    setProductsList(res.filter(product => product.category === category))
+                } else {
+                    setProductsList(res)
+                    setLoading(false)
+                }
+            }
+            )
+    }
+
+    useEffect(() => { seeProducts() }, [category])
+
 
     return (
 

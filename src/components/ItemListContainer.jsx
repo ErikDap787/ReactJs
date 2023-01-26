@@ -20,7 +20,7 @@ const ItemListContainer = ({ greeting }) => {
                     setLoading(false)
                     setProductsList(res.filter(product => product.category === category))
                 } else {
-                    setListaProductos(res)
+                    setProductsList(res)
                     setLoading(false)
                 }
             }
