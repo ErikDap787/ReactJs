@@ -1,11 +1,7 @@
 
 import {
-   Menu, MenuButton, MenuItem, MenuList, MenuItemOption,
-   MenuGroup,
-   MenuOptionGroup,
-   MenuDivider,
+   Menu, MenuButton,
    Button,
-   Container,
    Box,
    Flex,
    Img
@@ -15,11 +11,8 @@ import CartWidget from './CartWidget'
 
 import logo from '../img/logo.png'
 import { Link } from 'react-router-dom'
-import consolas from '../consolas.json'
 
 const NavBar = () => {
-
-   const { xbox, nintendo, playstation } = consolas
 
    return (
 
@@ -36,17 +29,17 @@ const NavBar = () => {
                      Home
                   </MenuButton>
                </Link>
-               <Link to="/xbox">
+               <Link to="/category/xbox">
                   <MenuButton as={Button}>
                      Xbox
                   </MenuButton>
                </Link>
-               <Link to="/nintendo">
+               <Link to="/category/nintendo">
                   <MenuButton as={Button}>
                      Nintendo
                   </MenuButton>
                </Link>
-               <Link to="/playstation">
+               <Link to="/category/playstation">
                   <MenuButton as={Button}>
                      Playstation
                   </MenuButton>

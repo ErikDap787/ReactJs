@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
+import customFetch from '../customFetch.js';
+import { products } from '../consolas.js';
 
 
 const ItemDetailContainer = () => {
@@ -8,29 +10,33 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
 
-    const seeProductDetail = () => {
+    const seeProducts = () => {
 
-        fetch("../consolas.json")
-            .then((res) => res.json())
-            .then((res) => {
+        customFetch(products).then((res) => {
 
-                if (id) {
-                    setLoading(false)
-                    setProductsList(res.find(product => product.id === id))
-                } else {
-                    setProductsList(res)
-                    setLoading(false)
-                }
+            setLoading(true)
+
+            if (id) {
+                setLoading(false)
+                setProductsList(res.find(product => product.id === 2))
+
+            } else {
+                setProductsList(res)
+                setLoading(false)
             }
-            )
+        }
+        )
     }
 
-    useEffect(() => { seeProductDetail() }, [id])
+    useEffect(() => { seeProducts() }, [])
 
 
     return (
 
+
         (!loading ? <ItemDetail productsList={productsList} /> : <h1>Loading...</h1>)
+
+
 
     )
 }
