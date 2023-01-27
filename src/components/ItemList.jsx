@@ -18,7 +18,7 @@ const ItemList = () => {
 
             setMyProducts(products)
             :
-            setMyProducts(products.filter(product => product.category.toLowerCase === category.toLowerCase))
+            setMyProducts(products.filter(product => product.category.toLowerCase() === category.toLowerCase()))
     }, [category])
 
 

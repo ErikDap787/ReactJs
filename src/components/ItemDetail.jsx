@@ -7,7 +7,6 @@ let ItemDetail = ({ productsList }) => {
     return (
         <>
             <Card
-                overflow="hidden"
                 variant="outline"
                 m="10"
                 backgroundColor="#F0ECCF"
