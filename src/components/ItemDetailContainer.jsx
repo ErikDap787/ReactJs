@@ -18,7 +18,7 @@ const ItemDetailContainer = () => {
 
             if (id) {
                 setLoading(false)
-                setProductsList(res.find(product => product.id === 2))
+                setProductsList(res.find(product => product.id === Number(id)))
 
             } else {
                 setProductsList(res)

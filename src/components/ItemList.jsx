@@ -1,33 +1,39 @@
-import { Grid } from "@chakra-ui/react";
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
+import { products } from "../consolas";
+import { useEffect, useState } from "react";
 
 
-const ItemList = ({ productsList }) => {
+
+const ItemList = () => {
+
+    const { category } = useParams()
+    const [myProducts, setMyProducts] = useState([])
+
+    useEffect(() => {
+
+        category === undefined
+
+            ?
+
+            setMyProducts(products)
+            :
+            setMyProducts(products.filter(product => product.category.toLowerCase === category.toLowerCase))
+    }, [category])
+
 
     return (
 
-        <>
-            <Grid
-                justifyContent="center"
-                templateRows={"repeat(1, 1fr)"}
-                templateColumns={"repeat(4, 3fr)"}
-                gap="3">
+        myProducts.map((product, index) => (
 
-                {productsList.map((product) => (
+            <ItemDetail
+                key={index}
+                productsList={product}
+            />
 
-                    <ItemDetail
-                        key={product.id}
-                        image={product.img}
-                        nombre={product.nombre}
-                        precio={product.precio}
-                        description={product.description}
-                        category={product.category}
-                    />
+        )
 
-                ))}
-            </Grid>
-        </>
-    )
+        ))
 
 }
 

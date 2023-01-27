@@ -1,4 +1,5 @@
 import { Card, Image, Stack, CardBody, Text, CardFooter, Button, Heading } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 
 let ItemDetail = ({ productsList }) => {
