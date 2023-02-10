@@ -26,7 +26,7 @@ let ItemDetail = ({ productsList }) => {
                         <Text py="2">
                             {productsList.category}
                         </Text>
-                        <Text py="2">
+                        <Text py="2">0
                             {productsList.description}
                         </Text>
                         <Text color="blue.600" fontSize="2xl">

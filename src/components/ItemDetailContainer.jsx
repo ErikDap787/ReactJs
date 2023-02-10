@@ -1,40 +1,22 @@
 import { useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
-import customFetch from '../customFetch.js';
-import { products } from '../consolas.js';
+import { useConsoles } from './ConsolesProvider';
 
 
 const ItemDetailContainer = () => {
-    const [productsList, setProductsList] = useState({})
-    const [loading, setLoading] = useState(true)
+
     const { id } = useParams()
 
-    const seeProducts = () => {
+    const { consolas } = useConsoles()
 
-        customFetch(products).then((res) => {
-
-            setLoading(true)
-
-            if (id) {
-                setLoading(false)
-                setProductsList(res.find(product => product.id === Number(id)))
-
-            } else {
-                setProductsList(res)
-                setLoading(false)
-            }
-        }
-        )
-    }
-
-    useEffect(() => { seeProducts() }, [])
+    const consolesList = id ? consolas.find(consola => consola.id === Number(id)) : consolas
 
 
     return (
 
 
-        (!loading ? <ItemDetail productsList={productsList} /> : <h1>Loading...</h1>)
+        (!loading ? <ItemDetail productsList={consolesList} /> : <h1>Loading...</h1>)
 
 
 

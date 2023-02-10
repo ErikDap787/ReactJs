@@ -2,38 +2,31 @@ import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { products } from "../consolas";
 import { useEffect, useState } from "react";
+import { useConsoles } from "./ConsolesProvider";
 
 
 
 const ItemList = () => {
 
+    const { consolas } = useConsoles()
     const { category } = useParams()
-    const [myProducts, setMyProducts] = useState([])
 
-    useEffect(() => {
-
-        category === undefined
-
-            ?
-
-            setMyProducts(products)
-            :
-            setMyProducts(products.filter(product => product.category.toLowerCase() === category.toLowerCase()))
-    }, [category])
+    const consolesList = category ? consolas.filter(consola => consola.category.toLowerCase() === category.toLowerCase()) : consolas
 
 
     return (
 
-        myProducts.map((product, index) => (
+        consolesList
+            .map((consola, index) => (
 
-            <ItemDetail
-                key={index}
-                productsList={product}
-            />
+                <ItemDetail
+                    key={index}
+                    productsList={consola}
+                />
 
-        )
+            )
 
-        ))
+            ))
 
 }
 
