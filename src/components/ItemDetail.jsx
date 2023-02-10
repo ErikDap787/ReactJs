@@ -2,7 +2,7 @@ import { Card, Image, Stack, CardBody, Text, CardFooter, Button, Heading } from 
 import { Link } from "react-router-dom";
 
 
-let ItemDetail = ({ productsList }) => {
+let ItemDetail = ({ consolesList }) => {
 
     return (
         <>
@@ -17,24 +17,24 @@ let ItemDetail = ({ productsList }) => {
                     borderRadius="lg"
                     objectFit="fill"
                     maxW={{ base: "100%", sm: "200px" }}
-                    src={productsList.img}
-                    alt={productsList.id}
+                    src={consolesList.img}
+                    alt={consolesList.id}
                 />
                 <Stack>
                     <CardBody>
-                        <Heading size="md">{productsList.nombre}</Heading>
+                        <Heading size="md">{consolesList.nombre}</Heading>
                         <Text py="2">
-                            {productsList.category}
+                            {consolesList.category}
                         </Text>
                         <Text py="2">0
-                            {productsList.description}
+                            {consolesList.description}
                         </Text>
                         <Text color="blue.600" fontSize="2xl">
-                            $ {productsList.precio}
+                            $ {consolesList.precio}
                         </Text>
                     </CardBody>
                     <CardFooter>
-                        <Link to={`/item/${productsList.id}`}>
+                        <Link to={`/item/${consolesList.id}`}>
                             <Button variant="solid" colorScheme="green">
                                 Detalles del producto
                             </Button>

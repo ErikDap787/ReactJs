@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
 import { useConsoles } from './ConsolesProvider';
@@ -16,8 +15,7 @@ const ItemDetailContainer = () => {
     return (
 
 
-        (!loading ? <ItemDetail productsList={consolesList} /> : <h1>Loading...</h1>)
-
+        <ItemDetail consolesList={consolesList} />
 
 
     )

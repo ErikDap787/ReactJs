@@ -13,11 +13,11 @@ export const ConsolesProvider = ({ children }) => {
     const consolasCollectionRef = collection(db, 'consolas');
 
     const getConsolas = async () => {
-        const [loading, setLoading] = useState(true);
+        /*  const [loading, setLoading] = useState(true); */
         const querySnapshot = await getDocs(consolasCollectionRef);
         const docs = querySnapshot.docs.map(doc => doc.data());
         setConsolas(docs);
-        setLoading(false);
+        /* setLoading(false);*/
     };
 
     useEffect(() => { getConsolas() }, []);

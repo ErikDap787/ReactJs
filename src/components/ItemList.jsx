@@ -1,7 +1,5 @@
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import { products } from "../consolas";
-import { useEffect, useState } from "react";
 import { useConsoles } from "./ConsolesProvider";
 
 
@@ -21,7 +19,7 @@ const ItemList = () => {
 
                 <ItemDetail
                     key={index}
-                    productsList={consola}
+                    consolesList={consola}
                 />
 
             )
