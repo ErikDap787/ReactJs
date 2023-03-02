@@ -15,8 +15,10 @@ const Cart = () => {
                     <ul>
                         {cartItems.map((item) => (
                             <List key={item.id}>
-                                {item.title} - {item.price} - Cantidad: {item.quantity}
-                                <Button onClick={() => removeItem(item.id)}>Eliminar</Button>
+                                <div>
+                                    {item.nombre} - {item.price} - Cantidad: {item.quantity}
+                                    <Button onClick={() => removeItem(item.id)}>Eliminar</Button>
+                                </div>
                             </List>
                         ))}
                     </ul>
