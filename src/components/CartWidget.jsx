@@ -16,7 +16,7 @@ export function CartWidget() {
         alignItems={"center"}
       >
         <NavLink to="/cart">
-          <FaShoppingCart /> <Text>{totalQuantity}</Text>
+          <FaShoppingCart /> {totalQuantity > 0 && <Text>{totalQuantity}</Text>}
         </NavLink>
       </Flex>
     </>
