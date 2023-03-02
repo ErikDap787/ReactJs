@@ -1,22 +1,26 @@
-import { Alert, Box, Flex, Icon } from '@chakra-ui/react'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { Flex, Text } from "@chakra-ui/react";
+import { useContext } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { CartContext } from "./CartContext";
 
-
-
-
-const CartWidget = () => {
+export function CartWidget() {
+  const { totalQuantity } = useContext(CartContext);
 
   return (
-
-    <Box>
-      <Flex>
-        <Icon as={AiOutlineShoppingCart} />
-        <Alert>
-          (1)
-        </Alert>
+    <>
+      <Flex
+        p="4"
+        flexDirection={"row"}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <NavLink to="/cart">
+          <FaShoppingCart /> <Text>{totalQuantity}</Text>
+        </NavLink>
       </Flex>
-    </Box>
-  )
+    </>
+  );
 }
 
-export default CartWidget
+export default CartWidget;

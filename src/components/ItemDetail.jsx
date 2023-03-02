@@ -1,8 +1,19 @@
-import { Card, Image, Stack, CardBody, Text, CardFooter, Button, Heading } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Card, Image, Stack, CardBody, Text, CardFooter, Button, Heading, HStack } from "@chakra-ui/react";
+import { useContext, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { CartContext } from './CartContext';
+import { ItemCount } from "./ItemCount";
 
 
 let ItemDetail = ({ consolesList }) => {
+
+    const [added, setAdded] = useState(false);
+    const { addToCart } = useContext(CartContext);
+
+    const onAdd = (qty) => {
+        addToCart(consolesList, qty);
+        setAdded(true);
+    };
 
     return (
         <>
@@ -33,13 +44,24 @@ let ItemDetail = ({ consolesList }) => {
                             $ {consolesList.precio}
                         </Text>
                     </CardBody>
-                    <CardFooter>
-                        <Link to={`/item/${consolesList.id}`}>
-                            <Button variant="solid" colorScheme="green">
-                                Detalles del producto
-                            </Button>
-                        </Link>
-                    </CardFooter>
+                    {added ? (
+                        <HStack alignItems="flex-end" justifyContent="space-evenly" p="5">
+                            <NavLink to="/cart">
+                                <Button colorScheme="orange" p="5" ml="3">
+                                    Ir al Carrito
+                                </Button>
+                            </NavLink>
+                            <NavLink to="/">
+                                <Button colorScheme="orange" p="5" ml="3">
+                                    Ir a Home
+                                </Button>
+                            </NavLink>
+                        </HStack>
+                    ) : (
+                        <Stack pl="6" flexDirection="row">
+                            <ItemCount stock={100} initial={1} onAdd={onAdd} />
+                        </Stack>
+                    )}
                 </Stack>
             </Card>
         </>

@@ -14,7 +14,6 @@ const ItemDetailContainer = () => {
 
     return (
 
-
         <ItemDetail consolesList={consolesList} />
 
 

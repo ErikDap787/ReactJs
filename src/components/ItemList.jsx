@@ -1,4 +1,4 @@
-import ItemDetail from "./ItemDetail";
+import Item from "./Item";
 import { useParams } from "react-router-dom";
 import { useConsoles } from "./ConsolesProvider";
 
@@ -17,7 +17,7 @@ const ItemList = () => {
         consolesList
             .map((consola, index) => (
 
-                <ItemDetail
+                <Item
                     key={index}
                     consolesList={consola}
                 />
