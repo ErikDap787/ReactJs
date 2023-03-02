@@ -1,6 +1,6 @@
 import { Button, FormLabel, Input } from "@chakra-ui/react";
+import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
-import { Form } from "react-router-dom";
 import { db } from "./db/firebase.config";
 
 function CheckoutForm() {
@@ -10,7 +10,6 @@ function CheckoutForm() {
     const [city, setCity] = useState("");
     const [zip, setZip] = useState("");
     const [country, setCountry] = useState("");
-    const [orderCode, setOrderCode] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,38 +21,23 @@ function CheckoutForm() {
             city,
             zip,
             country,
-            orderCode,
             date: new Date(),
         };
 
-        db.collection("orders")
-            .add(order)
-            .then((docRef) => {
-                console.log("Order added with ID: ", docRef.id);
-            })
-            .catch((error) => {
-                console.error("Error adding order: ", error);
-            });
+        const ordersCollection = collection(db, "orders");
 
-        const code = generateOrderCode();
-        setOrderCode(code);
-    };
+        addDoc(ordersCollection, order)
 
-    const generateOrderCode = () => {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        let code = "";
-        for (let i = 0; i < 8; i++) {
-            code += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return code;
+            .then(({ id }) => alert("EL ID DE COMPRA ES " + id))
+
     };
 
     return (
         <div>
             <h2>Checkout</h2>
-            <Form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
-                    <FormLabel htmlFor="name">Name:</FormLabel>
+                    <FormLabel htmlFor="name">Nombre:</FormLabel>
                     <Input
                         type="text"
                         id="name"
@@ -107,10 +91,7 @@ function CheckoutForm() {
                     />
                 </div>
                 <Button type="submit">Pagar</Button>
-            </Form>
-            {orderCode && (
-                <p>Tu codigo de confirmacion de compra es {orderCode}</p>
-            )}
+            </form>
         </div>
     );
 }
